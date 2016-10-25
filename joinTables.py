@@ -23,7 +23,7 @@ ResultTable of "joinTables -f Table1.txt Table2.txt -k 1 2 -c 3 4 5"
         E  d -- -- -- 0,5 0,6 0,7
         F d  -- -- --0,6 0,7 0,8
 
-@author: david
+@author: david John
 '''
 import argparse, os
 from string import split
