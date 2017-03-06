@@ -58,12 +58,12 @@ for file in args.files:  # loop through all files
         line = line.split()
         keyTuple = ()
         for k in args.keys:
-            keyTuple = keyTuple + (line[k - 1],)
+            keyTuple = keyTuple + (line[k],)
 
         value = []
         for column in args.columns:  # get the needed values
             try:
-                value.append(line[column - 1])
+                value.append(line[column])
             except IndexError:
                 raise ValueError("Not enough rows in line: %s in file %s" % (" ".join(line), file.name))
 
