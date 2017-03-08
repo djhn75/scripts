@@ -31,7 +31,7 @@ columns2 = args.columns2
 table2Dict = {}  # key1:columns1
 
 for line in table2:
-    info = line.rstrip().split(d)
+    line = line.rstrip().split(d)
     # start=
 
     # assemble keyTuple
@@ -42,7 +42,7 @@ for line in table2:
     # assemble columnTuple
     columnList=[]
     for column in columns2:
-        columnList.append([line[column]])
+        columnList.append(line[column])
 
     #combine key with column
     if keyTuple in table2Dict:
@@ -51,7 +51,8 @@ for line in table2:
         for column,tableColumn in zip(columnList,table2Dict[keyTuple]):
             if column not in tableColumn:
                 temp.append(tableColumn + ", " + column)
-
+            else:
+                temp.append(tableColumn)
         table2Dict[keyTuple] = temp
     else:
         table2Dict[keyTuple] = columnList
@@ -68,7 +69,7 @@ for line in table1:
 
     columnList = []
     for column in columns1:
-        columnList.append([line[column]])
+        columnList.append(line[column])
 
 
     output=[]
@@ -81,10 +82,12 @@ for line in table1:
             output.append(column)
     else:
         output += ["--"]*len(column2)
+    """
     if "," in geneId:
         geneId = geneId.split(",")[0]
     if geneId in miRnaDict:
         line.append(miRnaDict[geneId])
     else:
         line.append("--")
+    """
     print "\t".join(output)
